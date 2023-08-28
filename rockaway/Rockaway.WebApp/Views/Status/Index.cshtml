@@ -2,14 +2,14 @@
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>System Status</title>
-    </head>
-    <body>
-        <h1>@Model.Message</h1>
-        <p>The time is @Model.SystemTime?.ToString("O")</p>
-        <p>MachineName: @Model.MachineName</p>
-        <p>Assembly: @Model.AssemblyLocation</p>
-        <p>Last modified: @Model.AssemblyLastModified</p>
-    </body>
+<head>
+	<title>System Status</title>
+</head>
+<body>
+	<h1>@Model.Message</h1>
+	<p>The time is <span id="system-time">@Model.SystemTime?.ToString("O")</span></p>
+	<p>MachineName: @Model.MachineName</p>
+	<p>Assembly: @Model.AssemblyLocation</p>
+	<p>Last modified: @Model.AssemblyLastModified</p>
+</body>
 </html>
