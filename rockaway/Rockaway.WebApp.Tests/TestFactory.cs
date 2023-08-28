@@ -1,20 +1,16 @@
-﻿namespace Rockaway.WebApp.Tests;
+namespace Rockaway.WebApp.Tests;
 
-internal class TestFactory : WebApplicationFactory<Program>
-{
+internal class TestFactory : WebApplicationFactory<Program> {
 
 	private readonly IClock clock;
 
-	public TestFactory(IClock clock)
-	{
+	public TestFactory(IClock clock) {
 		this.clock = clock;
 	}
 
-	protected override void ConfigureWebHost(IWebHostBuilder builder)
-	{
+	protected override void ConfigureWebHost(IWebHostBuilder builder) {
 		builder.UseEnvironment("Test");
-		builder.ConfigureServices(services =>
-		{
+		builder.ConfigureServices(services => {
 			services.AddSingleton<IClock>(clock);
 		});
 	}

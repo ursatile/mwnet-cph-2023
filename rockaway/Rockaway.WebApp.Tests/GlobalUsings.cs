@@ -6,5 +6,5 @@ global using Microsoft.Extensions.DependencyInjection;
 global using Rockaway.WebApp.Controllers;
 global using Rockaway.WebApp.Models;
 global using Rockaway.WebApp.Services;
-global using Xunit;
 global using Shouldly;
+global using Xunit;

@@ -2,18 +2,14 @@ using System.Reflection;
 
 namespace Rockaway.WebApp.Controllers;
 
-public class StatusController : Controller
-{
+public class StatusController : Controller {
 	private readonly IClock clock;
 
-	public StatusController(IClock clock)
-	{
+	public StatusController(IClock clock) {
 		this.clock = clock;
 	}
-	public IActionResult Index()
-	{
-		var model = new SystemStatus
-		{
+	public IActionResult Index() {
+		var model = new SystemStatus {
 			Message = "Rockaway is OK",
 			SystemTime = clock.CurrentTime,
 			MachineName = Environment.MachineName,
