@@ -28,7 +28,13 @@ builder.Services.AddDbContext<RockawayDbContext>(options);
 builder.Services.AddScoped<IDatabaseServerInfo, RockawayDbContext>();
 
 builder.Services.AddControllersWithViews();
+
+#if DEBUG
+builder.Services.AddSassCompiler();
+#endif
+
 var app = builder.Build();
+
 if (sqlite) {
 	using var scope = app.Services.CreateScope();
 	var db = scope.ServiceProvider.GetService<RockawayDbContext>()!;
@@ -39,6 +45,6 @@ app.MapRazorPages();
 app.MapControllerRoute(
 	name: "default",
 	pattern: "{controller=Home}/{action=Index}/{id?}");
-
+app.UseStaticFiles();
 app.MapGet("/hello", () => "Hello World!");
 app.Run();

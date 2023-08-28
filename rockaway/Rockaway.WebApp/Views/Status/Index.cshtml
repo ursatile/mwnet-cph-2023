@@ -1,17 +1,9 @@
 @model Rockaway.WebApp.Models.SystemStatus
 
-<!DOCTYPE html>
-<html>
-<head>
-	<title>System Status</title>
-</head>
-<body>
-	<h1>@Model.Message</h1>
-	<p>The time is <span id="system-time">@Model.SystemTime?.ToString("O")</span></p>
-	<p>MachineName: @Model.MachineName</p>
-	<p>Assembly: @Model.AssemblyLocation</p>
-	<p>Last modified: @Model.AssemblyLastModified</p>
-	<hr />
-	<p>Database: @Model.DatabaseServerStatus</p>
-</body>
-</html>
+<h1>@Model.Message</h1>
+<p>The time is <span id="system-time">@Model.SystemTime?.ToString("O")</span></p>
+<p>MachineName: @Model.MachineName</p>
+<p>Assembly: @Model.AssemblyLocation</p>
+<p>Last modified: @Model.AssemblyLastModified</p>
+<hr />
+<p>Database: @Model.DatabaseServerStatus</p>

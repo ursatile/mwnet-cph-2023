@@ -1,44 +1,47 @@
 @page
 @model Rockaway.WebApp.Pages.RegisterModel
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Register</title>
-    </head>
-    <body>
-        @if(Model.Registered) {
-            <p>Thanks for registering!</p>
-            <p>Here's what we've got:</p>
-            <p>Email: @Model.Email</p>
-            <p>Interests: @Model.Interests</p>
-            <p>You play:</p>
-            <ul>
-                @foreach(var i in Model.Instruments) {
-                    <li>@i</li>
-                }
-            </ul>
-        } else {
-        <form method="post">
-            <p>Sign up for our newsletter!</p>
-            <label for="email-input">Email:</label>
-            <input type="email" name="email" id="email-input" />
-            <br />
-            <p>What do you want to hear about?</p>
-            @foreach(var interest in Model.AllInterests) {
-            <label>
-                <input type="checkbox" name="interests" value="@interest"/>
-                @interest
-            </label><br />
-            }
-            <p>Do you play any instruments?</p>
-                        @foreach(var instrument in Model.AllInstruments) {
-            <label>
-                <input type="checkbox" name="instruments" value="@instrument"/>
-                @instrument
-            </label><br />
-            }
-            <input type="submit" value="Sign me up!" />
-        </form>
-        }
-    </body>
-</html>
+
+@if (Model.Registered)
+{
+	<p>Thanks for registering!</p>
+	<p>Here's what we've got:</p>
+	<p>Email: @Model.Email</p>
+	<p>Interests: @Model.Interests</p>
+	<p>You play:</p>
+	<ul>
+		@foreach (var i in Model.Instruments)
+		{
+			<li>@i</li>
+		}
+	</ul>
+}
+else
+{
+	<form method="post">
+		<p>Sign up for our newsletter!</p>
+		<label for="email-input">Email:</label>
+		<input type="email" name="email" id="email-input" />
+		<br />
+		<p>What do you want to hear about?</p>
+		@foreach (var interest in Model.AllInterests)
+		{
+			<label>
+				<input type="checkbox" name="interests" value="@interest" />
+				@interest
+			</label>
+
+			<br />
+		}
+		<p>Do you play any instruments?</p>
+		@foreach (var instrument in Model.AllInstruments)
+		{
+			<label>
+				<input type="checkbox" name="instruments" value="@instrument" />
+				@instrument
+			</label>
+
+			<br />
+		}
+		<input type="submit" value="Sign me up!" />
+	</form>
+}
