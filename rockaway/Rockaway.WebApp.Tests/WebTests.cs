@@ -1,8 +1,23 @@
+using System.Net;
+
 namespace Rockaway.WebApp.Tests;
 
 public class WebTests {
 	protected IBrowsingContext browsingContext
 		=> BrowsingContext.New(Configuration.Default);
+
+	[Fact]
+	public async Task Artists_Page_Lists_Artists() {
+		var factory = new TestFactory();
+		var client = factory.CreateClient();
+		var result = await client.GetAsync("/artists");
+		result.EnsureSuccessStatusCode();
+		var html = await result.Content.ReadAsStringAsync();
+		html = WebUtility.HtmlDecode(html);
+		foreach (var artist in factory.DbContext.Artists) {
+			html.ShouldContain(artist.Name);
+		}
+	}
 
 	[Fact]
 	public async Task Status_Endpoint_Returns_OK() {

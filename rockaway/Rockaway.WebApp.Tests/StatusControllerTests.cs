@@ -1,3 +1,5 @@
+using Rockaway.WebApp.Tests.Data;
+
 namespace Rockaway.WebApp.Tests;
 
 public class StatusControllerTests {
@@ -5,7 +7,8 @@ public class StatusControllerTests {
 	public void Status_Index_Returns_View() {
 		var now = new DateTime(2023, 1, 2, 3, 4, 5, 6);
 		var clock = new FakeClock(now);
-		var c = new StatusController(clock);
+		var db = new TestDatabase();
+		var c = new StatusController(clock, db.DbContext);
 		var result = c.Index() as ViewResult;
 		result.ShouldNotBeNull();
 		var model = result.Model as SystemStatus;

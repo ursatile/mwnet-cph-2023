@@ -8,4 +8,6 @@ public class SystemStatus {
 
 	public DateTime? AssemblyLastModified { get; set; }
 	public string MachineName { get; set; }
+	public string DatabaseServerStatus { get; set; }
+
 }
