@@ -1,25 +1,33 @@
 using System.Reflection;
-using System.Runtime.CompilerServices;
 using Microsoft.AspNetCore.Mvc;
 using Rockaway.WebApp.Models;
+using Rockaway.WebApp.Services;
+
+namespace Rockaway.WebApp.Controllers;
 
 public class StatusController : Controller
 {
-    public IActionResult Index()
-    {
-        var model = new SystemStatus
-        {
-            Message = "Rockaway is OK",
-            SystemTime = DateTime.Now,
-            MachineName = Environment.MachineName,
-            AssemblyLocation = AssemblyLocation,
-            AssemblyLastModified = AssemblyLastModified
-        };
-        return View(model);
-    }
+	private readonly IClock clock;
 
-    private string AssemblyLocation
-        => Assembly.GetExecutingAssembly().Location;
-    private DateTime AssemblyLastModified
-        => new FileInfo(AssemblyLocation).LastWriteTime;
+	public StatusController(IClock clock)
+	{
+		this.clock = clock;
+	}
+	public IActionResult Index()
+	{
+		var model = new SystemStatus
+		{
+			Message = "Rockaway is OK",
+			SystemTime = clock.CurrentTime,
+			MachineName = Environment.MachineName,
+			AssemblyLocation = AssemblyLocation,
+			AssemblyLastModified = AssemblyLastModified
+		};
+		return View(model);
+	}
+
+	private string AssemblyLocation
+		=> Assembly.GetExecutingAssembly().Location;
+	private DateTime AssemblyLastModified
+		=> new FileInfo(AssemblyLocation).LastWriteTime;
 }
