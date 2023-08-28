@@ -1,7 +1,3 @@
-using Microsoft.EntityFrameworkCore;
-using Rockaway.WebApp.Data.Entities;
-using Rockaway.WebApp.Data.Sample;
-
 namespace Rockaway.WebApp.Data;
 
 public interface IDatabaseServerInfo {
@@ -14,10 +10,12 @@ public class RockawayDbContext : DbContext, IDatabaseServerInfo {
 	public RockawayDbContext(DbContextOptions<RockawayDbContext> options) : base(options) { }
 
 	public DbSet<Artist> Artists { get; set; } = null!;
+	public DbSet<Venue> Venues { get; set; } = null!;
 
 	protected override void OnModelCreating(ModelBuilder modelBuilder) {
 		base.OnModelCreating(modelBuilder);
 		modelBuilder.Entity<Artist>().HasData(SampleData.Artists.AllArtists);
+		modelBuilder.Entity<Venue>().HasData(SampleData.Venues.AllVenues);
 	}
 
 	private string DbVersionExpression {

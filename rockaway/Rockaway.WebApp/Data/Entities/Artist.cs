@@ -1,6 +1,4 @@
-using System.ComponentModel.DataAnnotations;
-
-namespace Rockaway.WebApp.Data.Entities;
+﻿namespace Rockaway.WebApp.Data.Entities;
 
 public class Artist {
 	public Guid Id { get; set; }
