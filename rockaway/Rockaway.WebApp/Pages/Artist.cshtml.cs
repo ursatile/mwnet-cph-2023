@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Rockaway.WebApp.Pages; 
+namespace Rockaway.WebApp.Pages;
 
 public class ArtistModel : PageModel {
 	private readonly RockawayDbContext context;

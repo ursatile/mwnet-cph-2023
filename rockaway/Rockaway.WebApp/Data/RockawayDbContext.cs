@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 namespace Rockaway.WebApp.Data;
 
 public interface IDatabaseServerInfo {
-	public string ServerVersion { get;  }
+	public string ServerVersion { get; }
 }
 
 public class RockawayDbContext : IdentityDbContext, IDatabaseServerInfo {

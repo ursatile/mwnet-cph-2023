@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 
-namespace Rockaway.WebApp.Data.Sample; 
+namespace Rockaway.WebApp.Data.Sample;
 
 public partial class SampleData {
 	public static class Users {

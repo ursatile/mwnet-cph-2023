@@ -1,0 +1,17 @@
+@{
+	ViewData["Title"] = "Admin";
+}
+
+<h1>Welcome to the admin area!</h1>
+<ul>
+	<li>
+		<a asp-controller="Artists" asp-action="Index" asp-area="Admin">
+			Artists
+		</a>
+	</li>
+	<li>
+		<a asp-controller="Venues" asp-action="Index" asp-area="Admin">
+			Venues
+		</a>
+	</li>
+</ul>

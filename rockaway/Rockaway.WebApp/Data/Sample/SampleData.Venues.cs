@@ -1,4 +1,4 @@
-namespace Rockaway.WebApp.Data.Sample; 
+namespace Rockaway.WebApp.Data.Sample;
 
 public partial class SampleData {
 
