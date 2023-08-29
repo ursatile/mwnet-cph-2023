@@ -1,6 +1,9 @@
 using Microsoft.Data.Sqlite;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.Configure<RouteOptions>(options => options.LowercaseUrls = true);
+
 builder.Services.AddRazorPages();
 var clock = new SystemClock();
 builder.Services.AddSingleton<IClock>(clock);

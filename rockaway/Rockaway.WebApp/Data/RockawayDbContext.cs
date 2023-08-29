@@ -14,7 +14,10 @@ public class RockawayDbContext : DbContext, IDatabaseServerInfo {
 
 	protected override void OnModelCreating(ModelBuilder modelBuilder) {
 		base.OnModelCreating(modelBuilder);
-		modelBuilder.Entity<Artist>().HasData(SampleData.Artists.AllArtists);
+		modelBuilder.Entity<Artist>(artist => {
+			artist.HasIndex(a => a.Slug).IsUnique();
+			artist.HasData(SampleData.Artists.AllArtists);
+		});
 		modelBuilder.Entity<Venue>().HasData(SampleData.Venues.AllVenues);
 	}
 

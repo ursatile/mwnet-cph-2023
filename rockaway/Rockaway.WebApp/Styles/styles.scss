@@ -7,7 +7,7 @@
 @import 'FontAwesome/brands.scss';
 
 $foreground-color: #fff;
-$brand-color: #036;
+$brand-color: #606;
 $background-color: #000;
 $border-radius: 8px;
 $gutter: 8px;
@@ -75,6 +75,7 @@ body {
 
 		input#nav-checkbox {
 			height: 0;
+
 			@include smartphone {
 				&:checked ~ nav {
 					height: 200px;
@@ -151,6 +152,10 @@ body {
 				}
 			}
 		}
+	}
+
+	@include smartphone {
+		font-size: max(1em, 20px);
 	}
 
 	a {
