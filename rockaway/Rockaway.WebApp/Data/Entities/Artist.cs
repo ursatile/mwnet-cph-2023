@@ -10,4 +10,7 @@ public class Artist {
 	[MaxLength(100)]
 	[Unicode(false)]
 	public string Slug { get; set; } = String.Empty;
+
+	public IList<Show> HeadlineShows { get; set; } = new List<Show>();
+	public IList<SupportSlot> SupportSlots { get; set; } = new List<SupportSlot>();
 }

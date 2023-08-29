@@ -1,4 +1,36 @@
+using NodaTime;
+
 namespace Rockaway.WebApp.Data.Entities;
+
+public class Show {
+	public Venue Venue { get; set; } = default!;
+	public LocalDate Date { get; set; } = default;
+	public Artist Headliner { get; set; } = default!;
+	public IList<SupportSlot> SupportSlots { get; set; } = new List<SupportSlot>();
+	public IList<TicketType> TicketTypes { get; set; } = new List<TicketType>();
+}
+
+public class SupportSlot {
+	public Show Show { get; set; } = default!;
+	public int SlotNumber { get; set; }
+	public Artist Artist { get; set; } = default!;
+}
+
+public class TicketType {
+	public Guid Id { get; set; }
+	public string Name { get; set; } = String.Empty;
+	public Show Show { get; set; } = default!;
+	public decimal Price { get; set; }
+	public int? Capacity { get; set; }
+}
+
+public class Ticket {
+	public Guid Id { get; set; }
+	public string CustomerName { get; set; }
+	public string CustomerEmail { get; set; }
+	public Instant? SoldAt { get; set; }
+}
+
 
 public class Venue {
 	public Venue() { }
@@ -14,6 +46,8 @@ public class Venue {
 		Telephone = telephone;
 		WebsiteUrl = websiteUrl;
 	}
+
+	public IList<Show> Shows { get; set; } = new List<Show>();
 
 	public Guid Id { get; set; }
 

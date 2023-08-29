@@ -48,6 +48,7 @@ if (sqlite) {
 	var db = scope.ServiceProvider.GetService<RockawayDbContext>()!;
 	lock (db) db.Database.EnsureCreated();
 }
+
 app.UseRouting();
 
 app.Use(next => context => {
