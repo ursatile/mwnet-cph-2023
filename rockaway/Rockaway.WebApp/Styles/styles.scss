@@ -75,6 +75,7 @@ body {
 
 		input#nav-checkbox {
 			height: 0;
+			visibility: hidden;
 
 			@include smartphone {
 				&:checked ~ nav {
@@ -166,5 +167,36 @@ body {
 		$amount: if($dark-mode, +75%, -75%);
 		color: color.scale($brand-color, $lightness: $amount);
 		text-decoration: none;
+	}
+
+	form {
+		div.form-group {
+			margin: 8px 0;
+
+			label {
+				width: 6em;
+				display: inline-block;
+				text-align: left;
+
+				&::after {
+					content: (':');
+				}
+			}
+
+			input[type=text] {
+				padding: 8px;
+				border: 1px solid $brand-color;
+				border-radius: $border-radius;
+				width: 100%;
+			}
+		}
+
+		button, input[type=submit], input[type=reset], input[type=button] {
+			color: $foreground-color;
+			background-color: $brand-color;
+			border: 1px solid color.scale($brand-color, $lightness: -25%);
+			padding: $gutter $gutter * 2;
+			border-radius: $border-radius;
+		}
 	}
 }

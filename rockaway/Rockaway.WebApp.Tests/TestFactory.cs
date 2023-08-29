@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Rockaway.WebApp.Data;
+using Rockaway.WebApp.Tests.Admin;
 using Rockaway.WebApp.Tests.Data;
 using System.Security.Claims;
 using System.Text.Encodings.Web;
@@ -28,11 +29,11 @@ internal class TestFactory : WebApplicationFactory<Program> {
 
 	public WebApplicationFactory<Program> WithFakeAuth()
 		=> WithWebHostBuilder(builder => {
-		builder.ConfigureTestServices(services => {
-			services.AddAuthentication("FakeAuth")
-				.AddScheme<AuthenticationSchemeOptions, FakeAuthHandler>("FakeAuth", _ => { });
+			builder.ConfigureTestServices(services => {
+				services.AddAuthentication("FakeAuth")
+					.AddScheme<AuthenticationSchemeOptions, FakeAuthHandler>("FakeAuth", _ => { });
+			});
 		});
-	});
 
 	private readonly IClock clock;
 	private readonly TestDatabase tdb;
@@ -48,6 +49,10 @@ internal class TestFactory : WebApplicationFactory<Program> {
 	protected override void ConfigureWebHost(IWebHostBuilder builder) {
 		builder.UseEnvironment("Test");
 		builder.ConfigureServices(services => {
+			services.AddAntiforgery(t => {
+				t.Cookie.Name = AntiForgeryTokenExtractor.ANTI_FORGERY_COOKIE_NAME;
+				t.FormFieldName = AntiForgeryTokenExtractor.ANTI_FORGERY_FIELD_NAME;
+			});
 			services.AddSingleton<IClock>(clock);
 			services.AddSingleton(tdb.DbContext);
 			services.AddSingleton<IDatabaseServerInfo>(tdb.DbContext);
