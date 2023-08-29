@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using NodaTime;
+using static Rockaway.WebApp.Data.NodaTimeConverters;
 
 namespace Rockaway.WebApp.Data;
 
@@ -8,12 +10,23 @@ public interface IDatabaseServerInfo {
 }
 
 public class RockawayDbContext : IdentityDbContext, IDatabaseServerInfo {
+
+	protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder) {
+		configurationBuilder.Properties<LocalDate>().HaveConversion<LocalDateConverter>();
+		configurationBuilder.Properties<LocalTime>().HaveConversion<LocalTimeConverter>();
+		configurationBuilder.Properties<LocalDateTime>().HaveConversion<LocalDateTimeConverter>();
+		configurationBuilder.Properties<Instant>().HaveConversion<InstantConverter>();
+	}
+
 	// We must declare a constructor that takes a DbContextOptions<RockawayDbContext>
 	// if we want to use Asp.NET to configure our database connection and provider.
 	public RockawayDbContext(DbContextOptions<RockawayDbContext> options) : base(options) { }
 
 	public DbSet<Artist> Artists { get; set; } = null!;
 	public DbSet<Venue> Venues { get; set; } = null!;
+	public DbSet<Show> Shows { get; set; }
+	public DbSet<TicketType> TicketTypes { get; set; }
+	public DbSet<Ticket> Tickets { get; set; }
 
 	protected override void OnModelCreating(ModelBuilder modelBuilder) {
 		base.OnModelCreating(modelBuilder);
@@ -23,6 +36,8 @@ public class RockawayDbContext : IdentityDbContext, IDatabaseServerInfo {
 		});
 		modelBuilder.Entity<Venue>().HasData(SampleData.Venues.AllVenues);
 		modelBuilder.Entity<IdentityUser>(users => users.HasData(SampleData.Users.Admin));
+
+
 	}
 
 	private string DbVersionExpression {
