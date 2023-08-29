@@ -1,3 +1,4 @@
+@using System.Xml
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,23 +20,25 @@
 			<a href="/">home</a>
 			<a asp-page="/artists">artists</a>
 			<a asp-page="/venues">venues</a>
+			<partial name="_LoginPartial" />
 		</nav>
 	</header>
 	<main>
 		@RenderBody()
 	</main>
-	<footer>
-		<span>
-			Copyright &copy; 2023 Rockaway
-		</span>
-		<nav>
-			<a href="#">about us</a>
-			<a href="#">contact us</a>
-			<a href="#">privacy policy</a>
-			<a href="#">terms &amp; conditions</a>
-			<a asp-controller="Status" asp-action="Index">system status</a>
-		</nav>
-	</footer>
+<footer>
+	<span>
+		Copyright &copy; 2023 Rockaway
+	</span>
+	<nav>
+		<a href="#">about us</a>
+		<a href="#">contact us</a>
+		<a href="#">privacy policy</a>
+		<a href="#">terms &amp; conditions</a>
+		<a asp-controller="Status" asp-action="Index">system status</a>
+	</nav>
+</footer>
+@await RenderSectionAsync("Scripts", false)
 </body>
 </html>
 

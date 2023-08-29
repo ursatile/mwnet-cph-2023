@@ -78,14 +78,18 @@ body {
 
 			@include smartphone {
 				&:checked ~ nav {
-					height: 200px;
+					height: 400px;
 				}
 			}
 		}
 
-
 		nav {
-			a {
+			form {
+				display: inline;
+			}
+
+			a, button {
+				border: 0;
 				background: $brand-color;
 				display: inline-block;
 				padding: 4px 16px;
@@ -108,7 +112,7 @@ body {
 				height: 0;
 				transition: height 0.2s ease;
 
-				a {
+				a, button {
 					display: block;
 					width: 100%;
 					padding: 16px;

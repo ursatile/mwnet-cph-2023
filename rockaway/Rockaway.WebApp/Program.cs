@@ -1,8 +1,13 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Data.Sqlite;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.Configure<RouteOptions>(options => options.LowercaseUrls = true);
+
+builder.Services
+	.AddDefaultIdentity<IdentityUser>()
+	.AddEntityFrameworkStores<RockawayDbContext>();
 
 builder.Services.AddRazorPages();
 var clock = new SystemClock();
@@ -44,6 +49,7 @@ if (sqlite) {
 	lock (db) db.Database.EnsureCreated();
 }
 app.UseRouting();
+app.UseAuthorization();
 app.MapRazorPages();
 app.MapControllerRoute(
 	name: "default",

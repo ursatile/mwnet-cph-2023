@@ -1,10 +1,13 @@
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+
 namespace Rockaway.WebApp.Data;
 
 public interface IDatabaseServerInfo {
 	public string ServerVersion { get;  }
 }
 
-public class RockawayDbContext : DbContext, IDatabaseServerInfo {
+public class RockawayDbContext : IdentityDbContext, IDatabaseServerInfo {
 	// We must declare a constructor that takes a DbContextOptions<RockawayDbContext>
 	// if we want to use Asp.NET to configure our database connection and provider.
 	public RockawayDbContext(DbContextOptions<RockawayDbContext> options) : base(options) { }
@@ -19,6 +22,7 @@ public class RockawayDbContext : DbContext, IDatabaseServerInfo {
 			artist.HasData(SampleData.Artists.AllArtists);
 		});
 		modelBuilder.Entity<Venue>().HasData(SampleData.Venues.AllVenues);
+		modelBuilder.Entity<IdentityUser>(users => users.HasData(SampleData.Users.Admin));
 	}
 
 	private string DbVersionExpression {
