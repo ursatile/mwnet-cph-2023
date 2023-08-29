@@ -33,4 +33,11 @@ public static class SeedDataHelpers {
 		venue.Telephone,
 		venue.WebsiteUrl
 	};
+
+	public static object ToSeedData(this Artist artist) => new {
+		artist.Id,
+		artist.Name,
+		artist.Description,
+		artist.Slug
+	};
 }

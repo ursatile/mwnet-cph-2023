@@ -28,7 +28,7 @@ public class RockawayDbContext : IdentityDbContext, IDatabaseServerInfo {
 		base.OnModelCreating(modelBuilder);
 		modelBuilder.Entity<Artist>(artist => {
 			artist.HasIndex(a => a.Slug).IsUnique();
-			artist.HasData(SampleData.Artists.AllArtists);
+			artist.HasData(SampleData.Artists.AllArtists.Select(a => a.ToSeedData()));
 			artist.HasMany(a => a.HeadlineShows).WithOne(show => show.Headliner);
 		});
 		modelBuilder.Entity<Venue>().HasData(SampleData.Venues.AllVenues.Select(venue => venue.ToSeedData()));
