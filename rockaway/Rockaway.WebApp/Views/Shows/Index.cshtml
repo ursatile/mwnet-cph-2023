@@ -1,0 +1,16 @@
+@model IEnumerable<Show>
+<section class="show">
+	@foreach (var show in Model) {
+		<span class="artist">
+			<h2>@show.Headliner.Name</h2>
+			@String.Join(", ", show.SupportArtists.Select(a => a.Name))
+		</span>
+		<span class="venue">@show.Venue.Name</span>
+		<span class="show-date">@show.Date</span>
+
+		
+		
+		
+		
+	}
+</section>

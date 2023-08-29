@@ -5,10 +5,6 @@ using static Rockaway.WebApp.Data.NodaTimeConverters;
 
 namespace Rockaway.WebApp.Data;
 
-public interface IDatabaseServerInfo {
-	public string ServerVersion { get; }
-}
-
 public class RockawayDbContext : IdentityDbContext, IDatabaseServerInfo {
 
 	protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder) {
@@ -33,8 +29,16 @@ public class RockawayDbContext : IdentityDbContext, IDatabaseServerInfo {
 		modelBuilder.Entity<Artist>(artist => {
 			artist.HasIndex(a => a.Slug).IsUnique();
 			artist.HasData(SampleData.Artists.AllArtists);
+			artist.HasMany(a => a.HeadlineShows).WithOne(show => show.Headliner);
 		});
-		modelBuilder.Entity<Venue>().HasData(SampleData.Venues.AllVenues);
+		modelBuilder.Entity<Venue>().HasData(SampleData.Venues.AllVenues.Select(venue => venue.ToSeedData()));
+		modelBuilder.Entity<Show>().HasData(SampleData.Shows.AllShows.Select(show => show.ToSeedData()));
+		modelBuilder.Entity<TicketType>().HasData(SampleData.
+			Shows.AllShows.SelectMany(s => s.TicketTypes).Select(tt => tt.ToSeedData()));
+
+		modelBuilder.Entity<SupportSlot>().HasData(SampleData.
+			Shows.AllShows.SelectMany(s => s.SupportSlots).Select(slot => slot.ToSeedData()));
+
 		modelBuilder.Entity<IdentityUser>(users => users.HasData(SampleData.Users.Admin));
 
 
