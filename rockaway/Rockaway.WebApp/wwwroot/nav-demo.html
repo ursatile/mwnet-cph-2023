@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		nav {
+			display: none;
+		}
+		input:checked ~ nav {
+			display: block;
+		}
+		input[type=checkbox] {
+			width: 0;
+		}
+	</style>
+</head>
+<body>
+	<label for="nav-toggle">toggle nav</label>
+<input type="checkbox" name="nav-toggle" id="nav-toggle" />
+<nav>
+	<a href="#">foo</a>
+	<a href="#">foo</a>
+	<a href="#">foo</a>
+</nav>
+</body>
+</html>

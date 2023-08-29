@@ -20,5 +20,62 @@
 	<ItemGroup>
 	  <UpToDateCheckInput Remove="Styles\styles.scss" />
 	</ItemGroup>
+	<ItemGroup>
+	  <UpToDateCheckInput Remove="Styles\FontAwesome\brands.scss" />
+	</ItemGroup>
+	<ItemGroup>
+	  <UpToDateCheckInput Remove="Styles\FontAwesome\fontawesome.scss" />
+	</ItemGroup>
+	<ItemGroup>
+	  <UpToDateCheckInput Remove="Styles\FontAwesome\regular.scss" />
+	</ItemGroup>
+	<ItemGroup>
+	  <UpToDateCheckInput Remove="Styles\FontAwesome\solid.scss" />
+	</ItemGroup>
+	<ItemGroup>
+	  <UpToDateCheckInput Remove="Styles\FontAwesome\v4-shims.scss" />
+	</ItemGroup>
+	<ItemGroup>
+	  <UpToDateCheckInput Remove="Styles\FontAwesome\_animated.scss" />
+	</ItemGroup>
+	<ItemGroup>
+	  <UpToDateCheckInput Remove="Styles\FontAwesome\_bordered-pulled.scss" />
+	</ItemGroup>
+	<ItemGroup>
+	  <UpToDateCheckInput Remove="Styles\FontAwesome\_core.scss" />
+	</ItemGroup>
+	<ItemGroup>
+	  <UpToDateCheckInput Remove="Styles\FontAwesome\_fixed-width.scss" />
+	</ItemGroup>
+	<ItemGroup>
+	  <UpToDateCheckInput Remove="Styles\FontAwesome\_functions.scss" />
+	</ItemGroup>
+	<ItemGroup>
+	  <UpToDateCheckInput Remove="Styles\FontAwesome\_icons.scss" />
+	</ItemGroup>
+	<ItemGroup>
+	  <UpToDateCheckInput Remove="Styles\FontAwesome\_list.scss" />
+	</ItemGroup>
+	<ItemGroup>
+	  <UpToDateCheckInput Remove="Styles\FontAwesome\_mixins.scss" />
+	</ItemGroup>
+	<ItemGroup>
+	  <UpToDateCheckInput Remove="Styles\FontAwesome\_rotated-flipped.scss" />
+	</ItemGroup>
+	<ItemGroup>
+	  <UpToDateCheckInput Remove="Styles\FontAwesome\_screen-reader.scss" />
+	</ItemGroup>
+	<ItemGroup>
+	  <UpToDateCheckInput Remove="Styles\FontAwesome\_shims.scss" />
+	</ItemGroup>
+	<ItemGroup>
+	  <UpToDateCheckInput Remove="Styles\FontAwesome\_sizing.scss" />
+	</ItemGroup>
+	<ItemGroup>
+	  <UpToDateCheckInput Remove="Styles\FontAwesome\_stacked.scss" />
+	</ItemGroup>
+	<ItemGroup>
+	  <UpToDateCheckInput Remove="Styles\FontAwesome\_variables.scss" />
+	</ItemGroup>
 
 </Project>
